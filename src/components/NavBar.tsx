@@ -1,13 +1,8 @@
-import {Link} from 'react-router-dom'
 const NavBar = () => {
   return (
-    <nav className='flex items-center px-4 h-24'>
-        <Link to="/">Logo</Link>
-        <ul className='flex justify-around items-center w-full'>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/produto">Produto</Link></li>
-        </ul>
-    </nav>
+    <header className="flex items-center justify-between bg-[#ff4c4c] p-4 text-white">
+       <h1 className="text-xl font-semibold">PDV</h1>
+    </header>
   )
 }
 

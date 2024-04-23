@@ -1,14 +1,20 @@
+import CadastroPro from "@/components/CadastroPro"
 import NavBar from "@/components/NavBar"
-import { Button } from "@/components/ui/button"
+import Nota from "@/components/Nota"
 
 const Home = () => {
   return (
-    <div className=" text-green-500">
+    <div className="flex flex-col h-screen bg-slate-50">
       <NavBar/>
-      <h1>Home</h1>
-      <div className="">
-        <Button>Clicar</Button>
-      </div>
+      <main className="flex flex-1 overflow-hidden">
+        <div className="bg-slate-300 flex-1">
+          <CadastroPro/>
+        </div>
+        <div className="bg-slate-200 w-[600px]">
+          <Nota/>
+        </div>
+      </main>
+     
     </div>
   )
 }
