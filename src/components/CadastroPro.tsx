@@ -6,6 +6,10 @@ import { Card, CardContent } from "./ui/card"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Button } from "./ui/button"
+import { useProductStore } from "@/store/ProductStore"
+
+import { v4 as uuidv4 } from 'uuid'
+
 
 const creatProductFormSchema = z.object({
   name: z.string()
@@ -17,9 +21,12 @@ const creatProductFormSchema = z.object({
 
 type creatProductFormData = z.infer<typeof creatProductFormSchema>
 const CadastroPro = () => {
+    
+  const addProduct = useProductStore((state)=>state.addProduct)
+
   const {
     register, 
-    handleSubmit,
+    handleSubmit,       
     reset,
     formState: {errors}  
   } = useForm<creatProductFormData>({
@@ -28,8 +35,18 @@ const CadastroPro = () => {
 
   const adicionaDados = (data: creatProductFormData)=>{
     console.log(data)
+    const newProduto = {
+       id:uuidv4(),
+       name: data.name,
+       quantidade: data.quantidade,
+       valor: data.valor
+    }
+    addProduct(newProduto)
     reset()
   }
+
+  
+  
   return (
     <div className="mx-auto max-w-2xl space-y-2 py-10">
       <Card>
