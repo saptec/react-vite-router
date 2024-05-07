@@ -9,6 +9,8 @@ import { Button } from "./ui/button"
 import { useProductStore } from "@/store/ProductStore"
 
 import { v4 as uuidv4 } from 'uuid'
+import { useEffect } from "react"
+
 
 
 const creatProductFormSchema = z.object({
@@ -16,36 +18,80 @@ const creatProductFormSchema = z.object({
   .min(1,'Qual nome do produto?'),
   quantidade: z.string(),
   valor: z.string()
-  .min(1,'Qual Valor do produto?')
+  .min(1,'Qual Valor do produto?'),
+  
 })
 
 type creatProductFormData = z.infer<typeof creatProductFormSchema>
-const CadastroPro = () => {
-    
-  const addProduct = useProductStore((state)=>state.addProduct)
+const CadastroPro = () => {  
+const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore(state => [state.addProduto, state.produtoEdit,state.updateProduto, state.setProdutoEdit])
+
+// const [edit,  setEdit] = useState(0)
+  
+//  console.log(produtoEdit?.id)
+ 
+
 
   const {
     register, 
     handleSubmit,       
     reset,
+    watch,
+    setValue,    
     formState: {errors}  
   } = useForm<creatProductFormData>({
     resolver: zodResolver(creatProductFormSchema)
   })
 
-  const adicionaDados = (data: creatProductFormData)=>{
-    console.log(data)
-    const newProduto = {
-       id:uuidv4(),
-       name: data.name,
-       quantidade: data.quantidade,
-       valor: data.valor
+  const valorEditar = ()=>{
+    setValue("name", produtoEdit.nome)
+    setValue("quantidade", produtoEdit.quantidade)
+    setValue("valor", produtoEdit.valor)
+    
+  }
+
+
+  useEffect(()=>{
+    if(produtoEdit){
+      valorEditar()
     }
-    addProduct(newProduto)
+  },[produtoEdit])
+ 
+
+  const adicionaDados = (data: creatProductFormData)=>{
+    // console.log(data)
+
+   
+
+    if(produtoEdit){
+      updateProduto({
+        id: produtoEdit.id,
+        nome: data.name,
+        quantidade: data.quantidade,
+        valor: data.valor
+        
+      })
+      setProdutoEdit(null)
+    }else{
+      const newProduto = {
+        id:uuidv4(),
+        nome: data.name,
+        quantidade: data.quantidade,
+        valor: data.valor
+        
+      }
+     addProduto(newProduto)     
+    }
+          
     reset()
   }
 
-  
+  const quant = watch('quantidade')
+  const val = watch('valor')
+
+  const calcular = (qt: number, vl: number)=>{
+     return (qt*vl)
+  }
   
   return (
     <div className="mx-auto max-w-2xl space-y-2 py-10">
@@ -55,7 +101,7 @@ const CadastroPro = () => {
               <div className="space-y-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Produto</Label>
-                  <Input autoFocus id="name" placeholder="Nome do produto" {...register('name')}/>
+                  <Input autoFocus id="name" placeholder="Nome do produto" {...register('name')} autoComplete="off"/>
                   {errors.name && <span className="text-red-500">{errors.name.message}</span>}
                 </div>
               </div>
@@ -71,12 +117,14 @@ const CadastroPro = () => {
                   {errors.valor && <span className="text-red-500">{errors.valor.message}</span>}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="valor">Valor Total</Label>
-                  <Input id="valor" placeholder="R$1000,00" type="text" disabled />
+                  <Label htmlFor="valor">Valor Total</Label>                 
+                  <div className="text-2xl">
+                    <span>R$ {val ? calcular(+quant, parseFloat(val.replace(',','.'))).toFixed(2): calcular(1, 0)} </span>
+                  </div>
                 </div>
               </div>
               <Button className="w-full" type="submit">
-                 Submit
+                 ADICIONAR 
               </Button>
           </form>
         </CardContent>

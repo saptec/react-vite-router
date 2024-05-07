@@ -1,32 +1,38 @@
 import { create } from "zustand"
 
 type Item = {
-    id:string,
-    name: string,
-    quantidade: string,
-    valor: string 
+    id:string
+    nome: string
+    quantidade: string
+    valor: string
+    
+    
 }
 type ProductStore={
-    products: Item[]
-    addProduct: (product: Item) =>void
-    removeProduct: (id: string) => void
-    editProduct: (id: string, products:Item) => void
+    products: Item[],   
+    addProduto: (produto:Item)=>void
+    produtoEdit:Item | null
+    setProdutoEdit: (pro:Item|null)=>void
+    updateProduto: (pro:Item)=>void  
+    removerProduto: (id: string)=> void
+     
 }
 
 export const useProductStore = create<ProductStore>((set)=>({
-    products:[],
+    products: [],
+    produtoEdit: null,  
 
-    addProduct: (product) => set(state => ({products: [...state.products, product]}) ),
+    addProduto: (produto)=>set( state=>({products: [...state.products,produto]})),
 
-    editProduct: (id, pro) =>
+    setProdutoEdit: (pro)=>set({produtoEdit:pro}),
+    removerProduto: (id)=> 
+        set((state)=>({products: state.products.filter((item)=> item.id !== id)})),
+    updateProduto:(pro)=>
         set((state)=>({
-            products: state.products.map((product)=>
-                product.id === id ? {...product, pro}:product
-            ),
-        })),
-
-    removeProduct: (id)=>
-        set((state)=>({
-            products: state.products.filter((product)=>product.id !== id)
-        }))
+            products: state.products.map((t)=>(t.id === pro.id ? pro : t))
+        }))  
+    
 }))
+   
+
+    
