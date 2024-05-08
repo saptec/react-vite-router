@@ -3,6 +3,7 @@ import logo from '@/img/logo.jpg'
 // import { Button } from "./ui/button"
 import { FaTrashAlt } from "react-icons/fa"
 
+
 const formatter = new Intl.NumberFormat('pt-BR',{
   style: "currency",
   currency:"BRL"
@@ -10,7 +11,8 @@ const formatter = new Intl.NumberFormat('pt-BR',{
 
 
 const Nota = () => {
-  const [produtos, setProdutoEdit,removerProduto ] = useProductStore((state)=>[state.products, state.setProdutoEdit,state.removerProduto])
+  const [produtos, setProdutoEdit,removerProduto,limpar ] = useProductStore((state)=>[state.products, state.setProdutoEdit,state.removerProduto,state.limpar])
+
   const soma = produtos.reduce((acc, item) => acc + (+item.quantidade*+(item.valor.replace(',','.'))),0)
 
   return (
@@ -41,9 +43,10 @@ const Nota = () => {
 
       </div>
 
-      <div className="bg-green-500 text-white font-extrabold text-3xl flex w-full justify-center items-center py-5 absolute bottom-0 ">
-          {formatter.format(soma)}
+      <div className="bg-green-500 text-white font-extrabold text-3xl flex w-full justify-around items-center py-5 absolute bottom-0 ">
+      <button onClick={()=>limpar()}>Limpar tudo</button> <span>{formatter.format(soma)}</span> <span></span>         
       </div>
+      
       
     </div>
   )

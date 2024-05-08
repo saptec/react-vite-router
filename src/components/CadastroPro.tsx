@@ -113,7 +113,7 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="valor">Valor</Label>
-                  <Input id="valor" placeholder="R$1000,00" type="text" {...register('valor')}/>
+                  <Input id="valor" placeholder="R$1000,00" min={0} type="number" step="0.010" inputMode="numeric" {...register('valor')}/>
                   {errors.valor && <span className="text-red-500">{errors.valor.message}</span>}
                 </div>
                 <div className="space-y-2">
@@ -123,9 +123,9 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
                   </div>
                 </div>
               </div>
-              <Button className="w-full" type="submit">
+              <Button className="p-4 mr-4" type="submit">
                  ADICIONAR 
-              </Button>
+              </Button>              
           </form>
         </CardContent>
       </Card>
