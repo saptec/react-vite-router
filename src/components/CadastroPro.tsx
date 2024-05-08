@@ -44,9 +44,9 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
   })
 
   const valorEditar = ()=>{
-    setValue("name", produtoEdit.nome)
-    setValue("quantidade", produtoEdit.quantidade)
-    setValue("valor", produtoEdit.valor)
+    setValue("name", produtoEdit!.nome)
+    setValue("quantidade", produtoEdit!.quantidade)
+    setValue("valor", produtoEdit!.valor)
     
   }
 
