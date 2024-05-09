@@ -75,7 +75,7 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
     }else{
       const newProduto = {
         id:uuidv4(),
-        nome: data.name,
+        nome: data.name.toUpperCase(),
         quantidade: data.quantidade,
         valor: data.valor
         
@@ -101,7 +101,7 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
               <div className="space-y-2">
                 <div className="space-y-2">
                   <Label htmlFor="name">Produto</Label>
-                  <Input autoFocus id="name" placeholder="Nome do produto" {...register('name')} autoComplete="off"/>
+                  <Input className="uppercase" autoFocus id="name" placeholder="Nome do produto" {...register('name')} autoComplete="on"/>
                   {errors.name && <span className="text-red-500">{errors.name.message}</span>}
                 </div>
               </div>

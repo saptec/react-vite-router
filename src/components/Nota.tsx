@@ -1,5 +1,5 @@
 import { useProductStore } from "@/store/ProductStore"
-import logo from '@/img/logo.jpg'
+// import logo from '@/img/logo.jpg'
 // import { Button } from "./ui/button"
 import { FaTrashAlt } from "react-icons/fa"
 
@@ -17,16 +17,13 @@ const Nota = () => {
 
   return (
     <div className="w-full h-full bg-[#fefede] flex flex-col relative">
-      <div className="border-b-[1px] border-dotted border-zinc-950 h-24 flex">
-        <img src={logo}  className="h-full "/>
-        topo
+      <div className="border-b-[1px] border-dotted border-zinc-950 pr-20">
+          <p className="flex justify-between items-center px-2"><b>Nº</b><b>Nome do Produto</b></p>
+          <p className="flex justify-between items-center px-2"><b>quantidade</b><b>x</b><b>Valor Un</b> <b>Valor Total</b></p>          
       </div>
 
-      <div className="">
-          <div className="border-b-[1px]  border-zinc-950">
-            <p className="flex justify-between items-center px-2"><b>Nº</b><b>Nome do Produto</b></p>
-            <p className="flex justify-between items-center px-2"><b>quantidade</b><b>x</b><b>Valor Un</b> <b>Valor Total</b></p>
-          </div>
+      <div className="pb-24 overflow-y-scroll overflow-x-hidden">
+               
           {produtos.map((item, i)=>(
             
             <div className="flex border-b-[1px] border-dashed border-zinc-950 " key={item.id} >
@@ -44,7 +41,7 @@ const Nota = () => {
       </div>
 
       <div className="bg-green-500 text-white font-extrabold text-3xl flex w-full justify-around items-center py-5 absolute bottom-0 ">
-      <button onClick={()=>limpar()}>Limpar tudo</button> <span>{formatter.format(soma)}</span> <span></span>         
+      <button className="text-sm bg-red-500 p-4 rounded-md" onClick={()=>limpar()}>Limpar</button> <span>{formatter.format(soma)}</span> <button className="text-sm bg-blue-500 p-4 rounded-md" onClick={()=>''}>Imprimir</button>        
       </div>
       
       
