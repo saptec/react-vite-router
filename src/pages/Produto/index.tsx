@@ -1,9 +1,6 @@
-import NavBar from "@/components/NavBar"
-
 const Produto = () => {
   return (
-    <div>
-      <NavBar/>
+    <div>     
       Produto
     </div>
   )

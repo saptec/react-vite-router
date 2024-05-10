@@ -108,12 +108,12 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
               <div className="grid grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="quantidade">Quantidade</Label>
-                  <Input defaultValue={1} min={1} id="quantidade" placeholder="1" type="number" step="0.010" {...register('quantidade')}/>
+                  <Input defaultValue={1} min={1} id="quantidade" placeholder="1" type="number" step="0.5" {...register('quantidade')}/>
                   {errors.quantidade && <span className="text-red-500">{errors.quantidade.message}</span>}
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="valor">Valor</Label>
-                  <Input id="valor" placeholder="R$1000,00" min={0} type="number" step="0.010" inputMode="numeric" {...register('valor')}/>
+                  <Input id="valor" placeholder="R$1000,00" min={0} type="number" step="0.05" inputMode="numeric" {...register('valor')}/>
                   {errors.valor && <span className="text-red-500">{errors.valor.message}</span>}
                 </div>
                 <div className="space-y-2">
