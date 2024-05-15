@@ -66,7 +66,7 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
     if(produtoEdit){
       updateProduto({
         id: produtoEdit.id,
-        nome: data.name,
+        nome: data.name.toUpperCase(),
         quantidade: data.quantidade,
         valor: data.valor
         

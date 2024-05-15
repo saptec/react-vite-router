@@ -9,7 +9,7 @@ const Home = () => {
         <div className="bg-slate-300 flex-1">
           <CadastroPro/>
         </div>
-        <div className="bg-slate-200 w-[400px]">
+        <div className="bg-slate-200 w-[450px]">
           <Nota/>
         </div>
      
