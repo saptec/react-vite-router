@@ -12,7 +12,7 @@ function Impressao() {
   const soma = produtos.reduce((acc, item) => acc + (+item.quantidade*+(item.valor.replace(',','.'))),0)
 
   return (
-    <div className="bg-zinc-100 h-screen  flex justify-center font-courier text-sm">
+    <div className="h-screen  flex  font-courier text-sm">
       <div className="bg-white w-[80mm] pt-4">
           <div className="flex">
             <div className="w-[20mm] p-1">
@@ -33,7 +33,7 @@ function Impressao() {
           <hr className='border-dashed border-1 border-zinc-950 mb-2 '/>
           <div className="">
             <p className="flex justify-between items-center px-2"><b>Nº</b><b>Nome do Produto</b></p>
-            <p className="flex justify-between items-center px-2"><b>quantidade</b><b>x</b><b>Valor Un</b> <b>Valor Total</b></p>          
+            <p className="flex justify-between items-center px-2"><b>Quant.</b><b>x</b><b>Valor Un.</b> <b>Valor Total</b></p>          
           </div>
           <hr className='border-dashed border-1 border-zinc-950'/>
           <div className="overflow-x-hidden">

@@ -21,7 +21,7 @@ const Nota = () => {
     <div className="w-full h-full bg-[#fefede] flex flex-col relative">      
       <div className="border-b-[1px] border-dotted border-zinc-950 pr-20">
           <p className="flex justify-between items-center px-2"><b>Nº</b><b>Nome do Produto</b></p>
-          <p className="flex justify-between items-center px-2"><b>quantidade</b><b>x</b><b>Valor Un</b> <b>Valor Total</b></p>          
+          <p className="flex justify-between items-center px-2"><b>Quant.</b><b>x</b><b>Valor Un.</b> <b>Valor Total</b></p>          
       </div>
 
       <div className="pb-24 overflow-y-scroll overflow-x-hidden text-sm">
@@ -43,7 +43,7 @@ const Nota = () => {
       </div>
 
       <div className="bg-green-500 text-white font-extrabold text-3xl flex w-full justify-around items-center py-5 absolute bottom-0 ">
-      <button className="text-sm bg-red-500 p-4 rounded-md" onClick={()=>limpar()}>Limpar</button> <span>{formatter.format(soma)}</span> <NavLink to={'/impressao'} className="text-sm bg-blue-500 p-4 rounded-md" >Imprimir</NavLink>        
+      <button className="text-sm bg-red-500 p-4 rounded-md" onClick={()=>limpar()}>Limpar</button> <span>{formatter.format(soma)}</span> <NavLink to={'/impressao'} className="text-sm bg-blue-500 p-4 rounded-md" target="_blank">Imprimir</NavLink>        
       </div>
       
       
