@@ -2,7 +2,7 @@ import { useProductStore } from "@/store/ProductStore"
 // import logo from '@/img/logo.jpg'
 // import { Button } from "./ui/button"
 import { FaTrashAlt } from "react-icons/fa"
-import { NavLink } from "react-router-dom"
+import { Link} from "react-router-dom"
 
 
 
@@ -43,7 +43,7 @@ const Nota = () => {
       </div>
 
       <div className="bg-green-500 text-white font-extrabold text-3xl flex w-full justify-around items-center py-5 absolute bottom-0 ">
-      <button className="text-sm bg-red-500 p-4 rounded-md" onClick={()=>limpar()}>Limpar</button> <span>{formatter.format(soma)}</span> <NavLink to={'/impressao'} className="text-sm bg-blue-500 p-4 rounded-md" >Imprimir</NavLink>        
+      <button className="text-sm bg-red-500 p-4 rounded-md" onClick={()=>limpar()}>Limpar</button> <span>{formatter.format(soma)}</span> <Link to={'/impressao'} target={'_blank'} rel="noopener noreferrer" className="text-sm bg-blue-500 p-4 rounded-md" >Imprimir</Link>        
       </div>
       
       
