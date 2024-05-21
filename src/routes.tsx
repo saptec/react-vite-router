@@ -2,7 +2,7 @@ import{Routes, Route}from "react-router-dom"
 import Home from "./pages/Home"
 import Produto from "./pages/Produto"
 import Layout from "./components/Layout"
-import Impressao from "@/pages/Impressao"
+import Impressao from "@/pages/Impressao/index.tsx"
 const MainRoutes = () => {
   return (
     <Routes>
