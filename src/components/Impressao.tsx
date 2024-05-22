@@ -9,11 +9,19 @@ function Impressao() {
     currency:"BRL"
   })
 
+  const formData = new Intl.DateTimeFormat('pt-BR', {
+    dateStyle:'short'
+  })
+  
+  console.log(formData.format(Date.now()))
+
+
+
   const soma = produtos.reduce((acc, item) => acc + (+item.quantidade*+(item.valor.replace(',','.'))),0)
 
   return (
-    <div className="h-screen  flex  font-courier text-sm">
-      <div className="bg-white w-[80mm] pt-4">
+    <div className="h-screen  flex  font-courier text-sm mx-auto print:mx-0 print:p-0 print:m-0">
+      <div className="bg-white w-[80mm] pt-4 ">
           <div className="flex">
             <div className="w-[20mm] p-1">
               <img src={logo} alt="" className='w-auto rounded-sm "'/>
@@ -24,11 +32,12 @@ function Impressao() {
                 <p className="">RUA RUI BARBOSA, 159A</p>
                 <p className="">CENTRO - ITAMBE-BA</p>
                 <p className="">(77)99948-9006</p>
+                <p className="">@deltadesigndigital</p>
                
             </div>
-            
           </div>
          
+          <p className="flex px-2 justify-end">{formData.format(new Date)}</p>
           <hr className='border-dashed border-1 border-zinc-950 mb-2'/>
           <hr className='border-dashed border-1 border-zinc-950 mb-2 '/>
           <div className="">
@@ -52,6 +61,7 @@ function Impressao() {
           <div className="p-2 flex justify-between font-semibold text-base">
             <span></span><span>Total: {formatter.format(soma)}</span>
           </div>
+          <p className="flex w-full justify-center items-center py-4">OBRIGADO E VOLTE SEMPRE!</p>
       </div>
 
     </div>

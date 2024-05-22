@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        'print': { 'raw': 'print' },
+      },
       fontFamily:{
         courier:['Courier Prime','sans-serif']
       },
