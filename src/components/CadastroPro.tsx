@@ -10,6 +10,7 @@ import { useProductStore } from "@/store/ProductStore"
 
 import { v4 as uuidv4 } from 'uuid'
 import { useEffect } from "react"
+import CadastroCli from "./CadastroCli"
 
 
 
@@ -95,6 +96,7 @@ const [addProduto, produtoEdit, updateProduto, setProdutoEdit] = useProductStore
   
   return (
     <div className="mx-auto max-w-2xl space-y-2 py-10">
+      <CadastroCli/>
       <Card>
         <CardContent>
           <form className="space-y-4" onSubmit={handleSubmit(adicionaDados)}>
