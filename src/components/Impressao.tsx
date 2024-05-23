@@ -53,9 +53,10 @@ function Impressao() {
             {produtos.map((item, i)=>(
               <div className="flex flex-col border-b-[1px] border-dashed border-zinc-950 space-y-1 text-xs" key={item.id} >
 
-                  <p className="flex pt-1"><span>[{i+1 }]-</span><span> {item.nome}</span></p>
+                  <p className="flex pt-1"><span> {(i+1).toString().padStart(4, '0') }-</span> <span> {item.nome}</span></p>
                   <p className="flex justify-around py-[0.8]"><span>{item.quantidade}</span><span>x</span><span>{formatter.format(+parseFloat(item.valor.replace(',','.')))}</span><span>{formatter.format(+item.quantidade*+(item.valor.replace(',','.')))}</span>
                   </p> 
+                  {/* "45".padStart(4, '0'); // "0045" */}
 
               </div>
             
